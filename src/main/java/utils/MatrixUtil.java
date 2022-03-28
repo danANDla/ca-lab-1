@@ -7,9 +7,9 @@ public class MatrixUtil {
     private Asker asker;
     private Randomizer randomizer;
 
-    public MatrixUtil(IOutil io) {
+    public MatrixUtil(IOutil io, Asker asker) {
         this.io = io;
-        this.asker = new Asker(io);
+        this.asker = asker;
         this.randomizer = new Randomizer();
     }
 
@@ -26,8 +26,9 @@ public class MatrixUtil {
         return randomizer.randomMatrix(rows, rows+1);
     }
 
-//    public Matrix readFile(){
-//
-//    }
+    public Matrix readFile(){
+        // todo do readfile
+        return randomizer.randomMatrix(4, 5);
+    }
 
 }

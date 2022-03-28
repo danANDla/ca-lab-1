@@ -5,6 +5,9 @@ public class Matrix {
     private int columns;
     private double[][] matrix;
 
+    public Matrix() {
+    }
+
     public Matrix(int rows, int columns) {
         this.rows = rows;
         this.columns = columns;

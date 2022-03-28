@@ -46,9 +46,27 @@ public class IOutil{
     public void printTable(int rows, int columns, double[][] table){
         for(int i = 0; i < rows; ++i){
             for(int j = 0; j < columns-1; ++j){
-                System.out.printf("%10.4f ", table[i][j]);
+                printDouble(table[i][j]);
             }
             System.out.printf("| %5.4f\n", table[i][columns-1]);
         }
+    }
+
+    public void printDouble(double num){
+        if(num == 0) System.out.printf("%10d ", 0);
+        else System.out.printf("%10.4f ", num);
+    }
+
+    public void printlnDouble(double num){
+        if(num == 0) System.out.printf("%10d\n", 0);
+        else System.out.printf("%10.4f\n", num);
+    }
+
+    public void printDivider(){
+        System.out.println("------------------------------------------");
+    }
+
+    public void printArrow(){
+        System.out.print("> ");
     }
 }

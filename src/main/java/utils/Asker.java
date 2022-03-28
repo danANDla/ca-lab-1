@@ -13,6 +13,7 @@ public class Asker {
 
     private String getNonEmpty() {
         String str;
+        io.printArrow();
         str = io.readLine().trim();
         while (str.equals("")) {
             str = io.readLine().trim();
@@ -28,8 +29,8 @@ public class Asker {
             try {
                 rowsNumber = Integer.parseInt(getNonEmpty());
                 valid = true;
-                if (rowsNumber <= 0) {
-                    io.printError("Размерность матрицы должна быть больше 0");
+                if (rowsNumber < 2 || rowsNumber > 20) {
+                    io.printError("Размерность матрицы должна быть больше 1 и меньше 21");
                     valid = false;
                 }
             } catch (NumberFormatException e) {
@@ -64,5 +65,29 @@ public class Asker {
             }
         }
         return new Matrix(rows, rows, matrix);
+    }
+
+    public int askMode() {
+        int mode = 0;
+        boolean valid = false;
+        io.printDivider();
+        io.printText("Выберите способ ввода:\n" +
+                "(1) ввести вручную\n" +
+                "(2) сгенерировать автоматически\n" +
+                "(3) считать из файла\n" +
+                "(0) выход из приложения\n");
+        while (!valid) {
+            try {
+                mode = Integer.parseInt(getNonEmpty());
+                valid = true;
+                if (mode < 0 || mode > 3) {
+                    io.printError("Такого режима нет");
+                    valid = false;
+                }
+            } catch (NumberFormatException e) {
+                io.printError("Неправильный формат целого числа");
+            }
+        }
+        return mode;
     }
 }
