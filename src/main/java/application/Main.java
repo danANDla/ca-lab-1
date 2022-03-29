@@ -36,7 +36,7 @@ public class Main {
                     break;
                 }
             }
-            if(running){
+            if (running && matrix != null) {
                 io.printWarning("Расширенная матрица");
                 matrixUtil.printMatrix(matrix);
 
