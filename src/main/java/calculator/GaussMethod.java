@@ -38,4 +38,16 @@ public class GaussMethod {
         }
         return new Matrix(triangle.getRows(), 1, answer);
     }
+
+    public Matrix residuals(Matrix matrix, Matrix unknowns) {
+        double [][] answer = new double[matrix.getRows()][1];
+        for(int i = 0; i < matrix.getRows(); ++i){
+            double sum = 0;
+            for(int j = 0; j < matrix.getRows(); ++j){
+                sum += matrix.getMatrix()[i][j] * unknowns.getMatrix()[j][0];
+            }
+            answer[i][0] = sum - matrix.getMatrix()[i][matrix.getRows()];
+        }
+        return new Matrix(matrix.getRows(), 1, answer);
+    }
 }

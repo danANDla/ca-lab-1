@@ -7,6 +7,7 @@ import java.util.Scanner;
 public class IOutil{
     private boolean errsInOut = true;
     private final Scanner scanner;
+    private static  final double EPS = 0.000001;
 
     public IOutil(){
         scanner = new Scanner(System.in);
@@ -48,18 +49,29 @@ public class IOutil{
             for(int j = 0; j < columns-1; ++j){
                 printDouble(table[i][j]);
             }
-            System.out.printf("| %5.4f\n", table[i][columns-1]);
+            System.out.print("| ");
+            printlnDouble(table[i][columns-1]);
+        }
+    }
+
+    public void printTable(int rows, int columns, double[][] table, int accuracy){
+        for(int i = 0; i < rows; ++i){
+            for(int j = 0; j < columns-1; ++j){
+                printDouble(table[i][j]);
+            }
+            if(accuracy == 1) System.out.printf("| %20.19f\n", table[i][columns-1]);
+            else System.out.printf("| %5.4f\n", table[i][columns-1]);
         }
     }
 
     public void printDouble(double num){
-        if(num == 0) System.out.printf("%10d ", 0);
+        if(Math.abs(num) <= EPS) System.out.printf("%10d ", 0);
         else System.out.printf("%10.4f ", num);
     }
 
     public void printlnDouble(double num){
-        if(num == 0) System.out.printf("%10d\n", 0);
-        else System.out.printf("%10.4f\n", num);
+        if(Math.abs(num) <= EPS) System.out.printf("%d\n", 0);
+        else System.out.printf("%.4f\n", num);
     }
 
     public void printDivider(){
