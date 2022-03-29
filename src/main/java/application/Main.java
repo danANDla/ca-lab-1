@@ -48,6 +48,7 @@ public class Main {
                 io.printlnDouble(gauss.determinantTriangle(triangle));
 
                 io.printWarning("Столбец неизвестных");
+                io.printTable(triangle.getRows(), 1, gauss.unknowns(triangle).getMatrix());
                 io.printWarning("Столбец невязок");
             }
         }

@@ -21,7 +21,7 @@ public class Asker {
         return str;
     }
 
-    public int askRows(){
+    public int askRows() {
         io.printText("Введите размерность матрицы матрицы");
         int rowsNumber = 0;
         boolean valid = false;
@@ -42,18 +42,18 @@ public class Asker {
 
     public Matrix askMatrix() {
         int rows = askRows();
-        double[][] matrix = new double[rows][rows];
+        double[][] matrix = new double[rows][rows + 1];
         for (int i = 0; i < rows; i++) {
             boolean validrow = false;
-            while(!validrow){
+            while (!validrow) {
                 String row = getNonEmpty();
                 String[] numbers = row.trim().toLowerCase(Locale.ROOT).split("\\s+");
-                if(numbers.length != rows){
+                if (numbers.length != rows + 1) {
                     io.printError("Неверное количество введенных чисел");
                     continue;
                 }
                 boolean badNum = false;
-                for (int j = 0; j < rows; j++) {
+                for (int j = 0; j < rows + 1; j++) {
                     try {
                         matrix[i][j] = Integer.parseInt(numbers[j]);
                     } catch (NumberFormatException e) {
@@ -64,7 +64,7 @@ public class Asker {
                 validrow = !badNum;
             }
         }
-        return new Matrix(rows, rows, matrix);
+        return new Matrix(rows, rows + 11, matrix);
     }
 
     public int askMode() {
