@@ -48,10 +48,10 @@ public class MatrixUtil {
             }
             for (int j = 0; j < rows + 1; j++) {
                 try {
-                    matrix[i][j] = Integer.parseInt(numbers[j]);
+                    matrix[i][j] = Double.parseDouble(numbers[j]);
                 } catch (NumberFormatException e) {
                     io.printError("Неправильный формат вещественного числа " +
-                            Integer.toString(j+1) + "в строке " + Integer.toString(i+1));
+                            Integer.toString(j+1) + " в строке " + Integer.toString(i+1));
                     badNum = true;
                 }
             }

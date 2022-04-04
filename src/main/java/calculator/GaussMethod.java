@@ -7,11 +7,22 @@ public class GaussMethod {
         double[][] table = matrix.getMatrix();
         for (int i = 0; i < matrix.getColumns() - 1; ++i) {
             for (int j = i + 1; j < matrix.getRows(); ++j) {
-                double coeff = table[j][i] / table[i][i];
-                for (int z = i; z < matrix.getColumns(); ++z) {
-                    table[j][z] -= table[i][z] * coeff;
-                    if (Math.abs(table[j][z]) <= EPS) table[j][z] = 0;
+                double coeff;
+                if(table[i][i] == 0){
+                    for (int z = i; z < matrix.getColumns(); ++z) {
+                        double t = table[j][z];
+                        table[j][z] = table[i][z];
+                        table[i][z] = t;
+                    }
                 }
+                else {
+                    coeff = table[j][i] / table[i][i];
+                    for (int z = i; z < matrix.getColumns(); ++z) {
+                        table[j][z] -= table[i][z] * coeff;
+                        if (Math.abs(table[j][z]) <= EPS) table[j][z] = 0;
+                    }
+                }
+
             }
         }
         matrix.setMatrix(table);

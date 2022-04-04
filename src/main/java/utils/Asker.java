@@ -55,7 +55,7 @@ public class Asker {
                 boolean badNum = false;
                 for (int j = 0; j < rows + 1; j++) {
                     try {
-                        matrix[i][j] = Integer.parseInt(numbers[j]);
+                        matrix[i][j] = Double.parseDouble(numbers[j]);
                     } catch (NumberFormatException e) {
                         io.printError("Неправильный формат вещественного числа");
                         badNum = true;
@@ -64,7 +64,7 @@ public class Asker {
                 validrow = !badNum;
             }
         }
-        return new Matrix(rows, rows + 11, matrix);
+        return new Matrix(rows, rows + 1, matrix);
     }
 
     public int askMode() {

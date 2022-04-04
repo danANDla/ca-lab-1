@@ -19,11 +19,11 @@ public class FileUtil {
     public ArrayList<String> readMatrix(String filename) {
         ArrayList<String> strings = null;
         try (FileReader reader = new FileReader(path + filename)) {
-            char[] buf = new char[1024];
+            char[] buf = new char[2048];
             strings = new ArrayList<>();
             int c;
             while ((c = reader.read(buf)) > 0) {
-                if (c < 1024) {
+                if (c < 2048) {
                     buf = Arrays.copyOf(buf, c);
                 }
                 System.out.print(buf);
