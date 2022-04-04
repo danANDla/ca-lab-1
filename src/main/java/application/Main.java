@@ -45,15 +45,19 @@ public class Main {
                 matrixUtil.printMatrix(triangle);
 
                 io.printWarning("Детерминант матрицы");
-                io.printlnDouble(gauss.determinantTriangle(triangle));
+                double det = gauss.determinantTriangle(triangle);
+                io.printlnDouble(det);
 
-                if(gauss.determinantTriangle(triangle) != 0){
-                    io.printWarning("Столбец неизвестных");
-                    Matrix unknowns = gauss.unknowns(triangle);
-                    io.printTable(triangle.getRows(), 1, unknowns.getMatrix());
+                if(gauss.isJoint(triangle)){
+                    if(det == 0) io.printText("Система имеет бесконечное количество решений");
+                    else{
+                        io.printWarning("Столбец неизвестных");
+                        Matrix unknowns = gauss.unknowns(triangle);
+                        io.printTable(triangle.getRows(), 1, unknowns.getMatrix());
 
-                    io.printWarning("Столбец невязок");
-                    io.printTable(matrix.getRows(), 1, gauss.residuals(matrix, unknowns).getMatrix());
+                        io.printWarning("Столбец невязок");
+                        io.printTable(matrix.getRows(), 1, gauss.residuals(matrix, unknowns).getMatrix());
+                    }
                 }
                 else{
                     io.printText("Система не совместна");

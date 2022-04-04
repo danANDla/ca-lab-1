@@ -61,4 +61,16 @@ public class GaussMethod {
         }
         return new Matrix(matrix.getRows(), 1, answer);
     }
+
+    public boolean isJoint(Matrix triangle){
+        for(int i = triangle.getRows()-1; i >= 0; --i){
+            boolean zeros = true;
+            for(int j = 0; j < triangle.getRows(); ++j){
+                zeros = triangle.getMatrix()[i][j] == 0;
+                if(!zeros) break;
+            }
+            if(zeros && triangle.getMatrix()[i][triangle.getRows()] != 0) return false;
+        }
+        return true;
+    }
 }
