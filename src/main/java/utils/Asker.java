@@ -90,4 +90,9 @@ public class Asker {
         }
         return mode;
     }
+
+    public String askFilename(){
+        io.printText("Введите имя файла");
+        return getNonEmpty();
+    }
 }

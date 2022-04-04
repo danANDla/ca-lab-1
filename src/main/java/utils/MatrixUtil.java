@@ -33,7 +33,8 @@ public class MatrixUtil {
 
     public Matrix readFile(){
         // todo do readfile
-        ArrayList<String> table = fileUtil.readMatrix("test");
+        String filename = asker.askFilename();
+        ArrayList<String> table = fileUtil.readMatrix(filename);
         if(table == null) return null;
         int rows = table.size();
         double[][] matrix = new double[rows][rows + 1];
